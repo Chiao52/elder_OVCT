@@ -1,3 +1,4 @@
+#from function import webcrawler, vpnfilter, vpnselection, decode, connection
 import platform
 import pandas
 import os
@@ -29,27 +30,17 @@ if __name__ == "__main__":
 
         elif function_chioce == '3':
             print('\n-----------------------------------\n')
-            file_name = input("【 Please enter the VPN file name 】\n\n=> ")
+            file_name = input("【 Please enter your VPN list name:】\n\n=> ")
             filtered_csv_path = "./resources/" + file_name + ".csv"
             while (filtered_csv_path.strip() == '') or (os.path.exists(filtered_csv_path) == False):
                 print("[Sorry, this path information is necessary, please input again.]")
                 print('\n-----------------------------------\n')
-                file_name = input("【 Please enter the VPN file name 】\n\n=> ")
+                file_name = input("【 Please enter your VPN list name:】\n\n=> ")
                 filtered_csv_path = "./resources/" + file_name + ".csv"
 
             vpn_hostname, vpn_ip, vpn_country = vpnselection.select_one(filtered_csv_path, show_list = "y")
             ovpn_file_content = decode.vpn(filtered_csv_path, vpn_hostname)
-
-            if platform.system() == "Linux":
-                connection.ubuntu(ovpn_file_content, vpn_hostname, vpn_ip, vpn_country)
-            elif platform.system() == "Darwin":
-                connection.macos(ovpn_file_content, vpn_hostname, vpn_ip, vpn_country)
-            elif platform.system() == "Windows":
-                connection.windows(ovpn_file_content, vpn_hostname, vpn_ip, vpn_country)
-            else:
-                print("Sorry, your operating system is not supported!")
-                sys.exit()
-            sys.exit()
+            connection.system_identify(vpn_hostname, vpn_ip, vpn_country, ovpn_file_content)
         
         elif function_chioce == '0':
             sys.exit()
