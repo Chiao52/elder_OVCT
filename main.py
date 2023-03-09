@@ -1,4 +1,3 @@
-#from function import webcrawler, vpnfilter, vpnselection, decode, connection
 import platform
 import pandas
 import os
