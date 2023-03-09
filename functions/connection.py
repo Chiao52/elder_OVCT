@@ -23,7 +23,6 @@ def ubuntu(ovpn_file_content, vpn_hostname, vpn_ip, vpn_country):
     print("\n===== ## Now, the public VPN (Country: {}, Hostname: {}, IP: {}) is connecting. ===== \n\n".format(vpn_country, vpn_hostname, vpn_ip))
     os.system('sudo openvpn --config {}'.format(L_path))
 
-
 def macos(ovpn_file_content, vpn_hostname, vpn_ip, vpn_country):
     ovpn_file_path = os.path.join(os.getcwd(), 'vpngate_{}_{}_{}.ovpn'.format(vpn_hostname, vpn_country, vpn_ip))
     with open(ovpn_file_path, mode="w") as file:
