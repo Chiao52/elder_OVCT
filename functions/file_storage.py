@@ -14,5 +14,5 @@ def save_file(Source):
     # columns = ['HostName', 'Country', 'IP', 'Speed (Mbps)', 'OpenVPN_ConfigData_Base64']
     # source_CSV = Source.reindex(columns=columns)
     Source.to_csv(Path, sep=',', index=False)
-    print("\n[ The result has outputted ! ]\n")
+    print("\n[ The reslut has been saved in {}.csv ]\n".format(file_name))
     return Path
