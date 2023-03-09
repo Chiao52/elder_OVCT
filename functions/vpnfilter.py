@@ -66,6 +66,7 @@ def no_filter(Source):
     return Source
 
 def ask_connection_or_not(Source):
+    print('\n-----------------------------------\n')
     Connection_or_not = input("【 Do you want to connection vpn now?(Y/N) 】 \n\n=> ")
     if Connection_or_not == "Y" or Connection_or_not == "y":
         print('\n-----------------------------------\n\n【 Public VPN 10 filtered records 】\n')
