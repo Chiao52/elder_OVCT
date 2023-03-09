@@ -39,7 +39,17 @@ if __name__ == "__main__":
 
             vpn_hostname, vpn_ip, vpn_country = vpnselection.select_one(filtered_csv_path, show_list = "y")
             ovpn_file_content = decode.vpn(filtered_csv_path, vpn_hostname)
-            connection.system_identify(vpn_hostname, vpn_ip, vpn_country, ovpn_file_content)
+
+            if platform.system() == "Linux":
+                connection.ubuntu(ovpn_file_content, vpn_hostname, vpn_ip, vpn_country)
+            elif platform.system() == "Darwin":
+                connection.macos(ovpn_file_content, vpn_hostname, vpn_ip, vpn_country)
+            elif platform.system() == "Windows":
+                connection.windows(ovpn_file_content, vpn_hostname, vpn_ip, vpn_country)
+            else:
+                print("Sorry, your operating system is not supported!")
+                sys.exit()
+            sys.exit()
         
         elif function_chioce == '0':
             sys.exit()
