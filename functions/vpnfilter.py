@@ -71,6 +71,7 @@ def ask_connection_or_not(Source):
     print('\n-----------------------------------\n\n')
     Connection_or_not = input("\n\n【 Do you want to connection vpn now?(Y/N) 】 \n\n=> ")
     if Connection_or_not == "Y" or Connection_or_not == "y":
+        print('\n-----------------------------------\n')
         vpn_hostname, vpn_ip, vpn_country = vpnselection.select_one(filtered_csv_path = "./resources/all_resources.csv", show_list = "n")
         ovpn_file_content = decode.vpn("./resources/all_resources.csv", vpn_hostname)
         
@@ -88,6 +89,7 @@ def ask_connection_or_not(Source):
         pass
 
 def ask_save_or_not(Source):
+    print('\n-----------------------------------\n')
     Save_or_not = input("\n\n【 Save as another list.(Y/N) 】 \n\n=> ")
     if Save_or_not == "Y" or Save_or_not == "y":
         file_storage.save_file(Source)
