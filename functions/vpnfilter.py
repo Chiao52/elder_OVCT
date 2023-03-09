@@ -1,6 +1,6 @@
 import pandas
 import csv
-from function import vpnselection, decode, connection, file_storage
+from functions import *
 import platform
 import sys
 
