@@ -68,6 +68,7 @@ def no_filter(Source):
 def ask_connection_or_not(Source):
     Connection_or_not = input("【 Do you want to connection vpn now?(Y/N) 】 \n\n=> ")
     if Connection_or_not == "Y" or Connection_or_not == "y":
+        print('\n-----------------------------------\n')
         vpn_hostname, vpn_ip, vpn_country = vpnselection.select_one(filtered_csv_path = "./resources/all_resources.csv", show_list = "n")
         ovpn_file_content = decode.vpn("./resources/all_resources.csv", vpn_hostname)
         
