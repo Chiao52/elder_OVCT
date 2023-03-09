@@ -71,17 +71,7 @@ def ask_connection_or_not(Source):
         print('\n-----------------------------------\n')
         vpn_hostname, vpn_ip, vpn_country = vpnselection.select_one(filtered_csv_path = "./resources/all_resources.csv", show_list = "n")
         ovpn_file_content = decode.vpn("./resources/all_resources.csv", vpn_hostname)
-        
-        if platform.system() == "Linux":
-            connection.ubuntu(ovpn_file_content, vpn_hostname, vpn_ip, vpn_country)
-        elif platform.system() == "Darwin":
-            connection.macos(ovpn_file_content, vpn_hostname, vpn_ip, vpn_country)
-        elif platform.system() == "Windows":
-            connection.windows(ovpn_file_content, vpn_hostname, vpn_ip, vpn_country)
-        else:
-            print("Sorry, your operating system is not supported!")
-            sys.exit()
-        sys.exit()
+        connection.system_identify(vpn_hostname, vpn_ip, vpn_country, ovpn_file_content)
     else:
         pass
 
