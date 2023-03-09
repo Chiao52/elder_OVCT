@@ -1,7 +1,7 @@
 import pandas, csv
 
 def file_update(Source):
-	Path = './resources/all_resources.csv'
+    Path = './resources/all_resources.csv'
     # columns = ['HostName', 'Country', 'IP', 'Speed (Mbps)', 'OpenVPN_ConfigData_Base64']
     # source_CSV = Source.reindex(columns=columns)
     Source.to_csv(Path, sep=',', index=False)
