@@ -69,9 +69,6 @@ def ask_connection_or_not(Source):
     print('\n-----------------------------------\n')
     Connection_or_not = input("【 Do you want to connection vpn now?(Y/N) 】 \n\n=> ")
     if Connection_or_not == "Y" or Connection_or_not == "y":
-        print('\n-----------------------------------\n\n【 Public VPN 10 filtered records 】\n')
-        print(Source[['#HostName', 'CountryLong', 'IP', 'Speed']].head(10))
-        print('\n-----------------------------------\n\n')
         vpn_hostname, vpn_ip, vpn_country = vpnselection.select_one(filtered_csv_path = "./resources/all_resources.csv", show_list = "n")
         ovpn_file_content = decode.vpn("./resources/all_resources.csv", vpn_hostname)
         
@@ -93,15 +90,8 @@ def ask_save_or_not(Source):
     Save_or_not = input("【 Save as another list.(Y/N) 】 \n\n=> ")
     if Save_or_not == "Y" or Save_or_not == "y":
         file_storage.save_file(Source)
+        print('\n-----------------------------------\n\n【 Public VPN 10 filtered records 】\n')
+        print(Source[['#HostName', 'CountryLong', 'IP', 'Speed']].head(10))
+        print('\n-----------------------------------\n\n')
     else:
         pass
-
-def Export(Source):
-    print('\n-----------------------------------\n')
-    Path = input("【 Where would you like to save the CSV file? 】 \n\nPlease enter the absolute path and the \"file name\" (E.g. /home/user/Desktop/[choose a file_name]) \n\n=> ")
-    Path += '.csv'
-    # columns = ['HostName', 'Country', 'IP', 'Speed (Mbps)', 'OpenVPN_ConfigData_Base64']
-    # source_CSV = Source.reindex(columns=columns)
-    Source.to_csv(Path, sep=',', index=False)
-    print("\n[ The result has outputted ! ]\n")
-    return
