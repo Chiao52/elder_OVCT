@@ -1,6 +1,6 @@
 import pandas
 import csv
-from function import vpnselection, decode, connection
+from function import vpnselection, decode, connection, file_storage
 import platform
 import sys
 
@@ -95,7 +95,7 @@ def ask_connection_or_not():
 def ask_save_or_not(Source):
     Save_or_not = input("\n\n【 Save as another list.(Y/N) 】 \n\n=> ")
     if Save_or_not == "Y" or Save_or_not == "y":
-        print("save_file(Source)")
+        file_storage.save_file(Source)
     else:
         pass
 
