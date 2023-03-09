@@ -90,8 +90,8 @@ def ask_save_or_not(Source):
     Save_or_not = input("【 Save as another list.(Y/N) 】 \n\n=> ")
     if Save_or_not == "Y" or Save_or_not == "y":
         file_storage.save_file(Source)
-        print('\n-----------------------------------\n\n【 Public VPN 10 filtered records 】\n')
-        print(Source[['#HostName', 'CountryLong', 'IP', 'Speed']].head(10))
-        print('\n-----------------------------------\n\n')
     else:
         pass
+    print('\n-----------------------------------\n\n【 Public VPN 10 filtered records 】\n')
+    print(Source[['#HostName', 'CountryLong', 'IP', 'Speed']].head(10))
+    print('\n-----------------------------------\n\n')
