@@ -13,20 +13,20 @@ def filter(result):
     if selection == "1":
         result = filter_country(result)
         ask_save_or_not(result)
-        ask_connection_or_not()
+        ask_connection_or_not(result)
 
     # Enter 2: speed
     elif selection == "2":
         result = filter_speed(result, Input_Country)
         ask_save_or_not(result)
-        ask_connection_or_not()
+        ask_connection_or_not(result)
 
     # Enter 3: country & speed
     elif selection == "3":
         result = filter_country(result)
         result = filter_speed(result, Input_Country)
         ask_save_or_not(result)
-        ask_connection_or_not()
+        ask_connection_or_not(result)
     else:
         pass
         
@@ -49,10 +49,6 @@ def filter_country(Source):
             print('\n[Your input is not in the list, please enter it again.]')
     Source = Source[Source.CountryLong.eq(Input_Country)]
 
-    print('\n-----------------------------------\n\n【 Public VPN 10 filtered records 】\n')
-    print(Source[['#HostName', 'CountryLong', 'IP', 'Speed']].head(10))
-    print('\n-----------------------------------\n\n')
-
     return Source
 
 def filter_speed(Source, Input_Country):
@@ -64,16 +60,15 @@ def filter_speed(Source, Input_Country):
     Speed = int(input("\n【 How fast the VPN would you prefer 】\n\n=> "))
     Source = Source.query('Speed >= {}'.format(Speed))
 
-    print('\n-----------------------------------\n\n【 Public VPN 10 filtered records 】\n')
-    print(Source[['#HostName', 'CountryLong', 'IP', 'Speed']].head(10))
-    print('\n-----------------------------------\n\n')
-
     return Source
 
 def no_filter(Source):
     return Source
 
-def ask_connection_or_not():
+def ask_connection_or_not(Source):
+    print('\n-----------------------------------\n\n【 Public VPN 10 filtered records 】\n')
+    print(Source[['#HostName', 'CountryLong', 'IP', 'Speed']].head(10))
+    print('\n-----------------------------------\n\n')
     Connection_or_not = input("\n\n【 Do you want to connection vpn now?(Y/N) 】 \n\n=> ")
     if Connection_or_not == "Y" or Connection_or_not == "y":
         vpn_hostname, vpn_ip, vpn_country = vpnselection.select_one(filtered_csv_path = "./resources/all_resources.csv", show_list = "n")
