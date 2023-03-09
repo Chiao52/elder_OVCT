@@ -1,6 +1,7 @@
 import re
 import os
 import sys
+import platform
 
 def system_identify(vpn_hostname, vpn_ip, vpn_country, ovpn_file_content):
     if platform.system() == "Linux":
