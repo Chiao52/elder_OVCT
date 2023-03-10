@@ -32,7 +32,13 @@ def macos(ovpn_file_content, vpn_hostname, vpn_ip, vpn_country):
     print("\n## The vpngate_{}_{}_{}.ovpn file imported successfully. \n\n===== ## Now, you can connect with OpenVPN ! ===== \n\n".format(vpn_hostname, vpn_country, vpn_ip)) 
 
 def windows(ovpn_file_content, vpn_hostname, vpn_ip, vpn_country):
-    openvpn_path = "/etc/openvpn"
+    openvpn_path = input("【 Please input your openVPN software file path. 】\n\n E.g. /etc/openvpn \n\n=> ")    
+    while(openvpn_path.strip()==''): 
+        print("\n[Sorry, this path information is necessary, please input again.]")
+        print('\n-----------------------------------\n')
+        openvpn_path = input("【 Please input your openVPN software file path. 】\n\n E.g. /etc/openvpn \n\n=> ")
+        
+    print('\n-----------------------------------\n')
     W_path = os.path.join(openvpn_path, 'config', 'vpngate_{}_{}_{}.ovpn'.format(vpn_hostname, vpn_country, vpn_ip))
     with open(W_path, mode="w") as file:
         file.write(ovpn_file_content)
