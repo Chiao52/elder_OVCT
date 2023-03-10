@@ -36,4 +36,4 @@ def windows(ovpn_file_content, vpn_hostname, vpn_ip, vpn_country):
     W_path = os.path.join(openvpn_path, 'config', 'vpngate_{}_{}_{}.ovpn'.format(vpn_hostname, vpn_country, vpn_ip))
     with open(W_path, mode="w") as file:
         file.write(ovpn_file_content)
-    print("\n## The vpngate_{}_{}_{}.ovpn file imported successfully. \n\n===== ## Now, you can connect with OpenVPN ! ===== \n\n".format(vpn_hostname, vpn_country, vpn_ip)
+    print("\n## The vpngate_{}_{}_{}.ovpn file imported successfully. \n\n===== ## Now, you can connect with OpenVPN ! ===== \n\n".format(vpn_hostname, vpn_country, vpn_ip))
