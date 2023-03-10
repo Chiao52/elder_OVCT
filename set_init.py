@@ -2,7 +2,7 @@ import os
 
 def init_file_name():
     dirPath = os.getcwd().replace('\\', '/')
-    dirPath = str(dirPath) + '/fuctions'
+    dirPath = str(dirPath) + '/functions'
     file_list = [f for f in os.listdir(dirPath) if os.path.isfile(os.path.join(dirPath, f))]
     file_name = []
     for i in file_list:
