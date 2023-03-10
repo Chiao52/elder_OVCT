@@ -11,7 +11,7 @@ def init_file_name():
 
     file_name.remove("__init__")
     for i in file_name:
-        if ".sw" in i:
+        if ((".sw" in i) or (".pyc" in i)):
             file_name.remove(i)
         
     #write ./function/__init__.py
