@@ -1,8 +1,6 @@
 import pandas
 import csv
 from functions import vpnselection, decode, connection, file_storage
-import platform
-import sys
 
 def filter(result):
     Input_Country = " "
