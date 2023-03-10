@@ -15,14 +15,14 @@ def filter(result):
 
     # Enter 2: speed
     elif selection == "2":
-        result = filter_speed(result, Input_Country)
+        result = filter_speed(result)
         ask_save_or_not(result)
         ask_connection_or_not(result)
 
     # Enter 3: country & speed
     elif selection == "3":
         result = filter_country(result)
-        result = filter_speed(result, Input_Country)
+        result = filter_speed(result)
         ask_save_or_not(result)
         ask_connection_or_not(result)
         
@@ -50,7 +50,7 @@ def filter_country(Source):
     Source = Source[Source.CountryLong.eq(Input_Country)]
     return Source
 
-def filter_speed(Source, Input_Country):
+def filter_speed(Source):
     Speed_list = Source.filter(items=['Speed'])
     SpeedMax = Speed_list.max()  
     SpeedMin = Speed_list.min()
