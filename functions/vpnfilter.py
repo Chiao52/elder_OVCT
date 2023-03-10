@@ -46,8 +46,8 @@ def filter_country(Source):
             break
         else:
             print('\n[Your input is not in the list, please enter it again.]')
+            
     Source = Source[Source.CountryLong.eq(Input_Country)]
-
     return Source
 
 def filter_speed(Source, Input_Country):
@@ -57,8 +57,8 @@ def filter_speed(Source, Input_Country):
     print('\n-----------------------------------\n')
     print('The Speed Range: ' + SpeedMin.to_string(index=False) + ' Mbps' + ' ~ ' + SpeedMax.to_string(index=False) + ' Mbps')
     Speed = int(input("\n【 How fast the VPN would you prefer 】\n\n=> "))
+    
     Source = Source.query('Speed >= {}'.format(Speed))
-
     return Source
 
 def no_filter(Source):
