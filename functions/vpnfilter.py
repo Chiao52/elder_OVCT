@@ -25,6 +25,7 @@ def filter(result):
         result = filter_speed(result, Input_Country)
         ask_save_or_not(result)
         ask_connection_or_not(result)
+        
     else:
         pass
         
