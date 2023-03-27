@@ -113,7 +113,7 @@ def Connection(Ovpn_File_Content, Vpn_Hostname, Vpn_Ip, Vpn_Country):
     with open(ovpn_file_path, mode="w") as file:
         file.write(Ovpn_File_Content)
     print("\n===== ## Now, the public VPN (Country: {}, Hostname: {}, IP: {}) is connecting. ===== \n\n".format(Vpn_Country, Vpn_Hostname, Vpn_Ip))
-    os.system('sudo openvpn --config {}'.format(Ovpn_File_Path))
+    os.system('sudo openvpn --config {}'.format(ovpn_file_path))
 
 if __name__ == "__main__":
     source = webcrawler()
