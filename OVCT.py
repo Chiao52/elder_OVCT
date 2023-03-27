@@ -12,7 +12,6 @@ def webcrawler():
     for csv_list_link in strong_word:
         if csv_list_link.a != None:
             link_list.append(csv_list_link.a.get('href'))
-    print(link_list)
 
     vpngate_url = link_list[6]
     source = pandas.read_csv(vpngate_url, header=1)
@@ -88,13 +87,14 @@ def selectOne(filtered_csv_path):
     vpn_data = Source[(filter)].values.tolist()[0]
     vpn_ip = vpn_data[2]
     vpn_country = vpn_data[1]
+    
     if " " in vpn_country:
         vpn_country = vpn_country.replace(" ", "_")
     else:
         pass
     return vpn_hostname, vpn_ip, vpn_country
 
-def decodeSelectedVpn(Vpn_Hostname):
+def decodeSelectedVpn(filtered_csv_path, Vpn_Hostname):
     list_file = pandas.read_csv(filtered_csv_path)
     filter = list_file['#HostName'] == Vpn_Hostname
     vpn_data = list_file[(filter)]
@@ -145,5 +145,5 @@ if __name__ == "__main__":
             
 
             vpn_hostname, vpn_ip, vpn_country = selectOne(filtered_csv_path)
-            ovpn_file_content = decodeSelectedVpn(vpn_hostname)
-            Connection(vpn_hostname, vpn_ip, vpn_country, ovpn_file_content)
+            ovpn_file_content = decodeSelectedVpn(filtered_csv_path, vpn_hostname)
+            Connection(ovpn_file_content, vpn_hostname, vpn_ip, vpn_country)
